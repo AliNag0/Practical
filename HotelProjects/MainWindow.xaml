@@ -1,0 +1,68 @@
+﻿<Window x:Class="HotelProjects.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Бронирование гостиницы" Height="600" Width="800">
+    <Grid>
+        <TabControl Background="#FFDAFCDA">
+            <TabItem Header="Новое бронирование">
+                <Grid Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="ФИО клиента:" Grid.Row="0"/>
+                    <TextBox x:Name="txtFullName" Grid.Row="1" Margin="0,0,0,10"/>
+
+                    <TextBlock Text="Тип номера:" Grid.Row="2"/>
+                    <ComboBox x:Name="cmbRoomType" Grid.Row="3" Margin="0,0,0,10">
+                        <ComboBoxItem Content="Одноместный"/>
+                        <ComboBoxItem Content="Двухместный"/>
+                        <ComboBoxItem Content="Люкс"/>
+                        <ComboBoxItem Content="Президентский"/>
+                    </ComboBox>
+
+                    <TextBlock Text="Дата заезда:" Grid.Row="4"/>
+                    <DatePicker x:Name="dpCheckIn" Grid.Row="5" Margin="0,0,0,10"/>
+
+                    <TextBlock Text="Дата выезда:" Grid.Row="6"/>
+                    <DatePicker x:Name="dpCheckOut" Grid.Row="7" Margin="0,0,0,331"/>
+
+                    <Button x:Name="btnLoadImage" Grid.Row="7" Click="BtnLoadImage_Click" Margin="0,60,0,152">
+                        <Image x:Name="imgClient" Stretch="Uniform" Height="164" Width="774"/>
+                    </Button>
+
+                    <Button x:Name="btnBook" Content="Забронировать" Grid.Row="7" Click="BtnBook_Click" Margin="-10,250,0,30" Background="#FF77FC84"/>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Просмотр бронирований">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <DataGrid x:Name="dgBookings" AutoGenerateColumns="False" Grid.Column="0"
+                              SelectionChanged="DgBookings_SelectionChanged" Margin="0,18,0,18">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ФИО" Binding="{Binding FullName}"/>
+                            <DataGridTextColumn Header="Тип номера" Binding="{Binding RoomType}"/>
+                            <DataGridTextColumn Header="Дата заезда" Binding="{Binding CheckInDate, StringFormat=d}"/>
+                            <DataGridTextColumn Header="Дата выезда" Binding="{Binding CheckOutDate, StringFormat=d}"/>
+                            <DataGridTextColumn Header="Стоимость" Binding="{Binding TotalPrice}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <Image x:Name="imgSelectedBooking" Grid.Column="1" Width="200" Margin="10" Stretch="Uniform"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
