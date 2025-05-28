@@ -1,0 +1,76 @@
+﻿<Window x:Class="TestProjects.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TestProjects"
+        mc:Ignorable="d"
+        Title="STest" Height="450" Width="600" 
+        WindowStartupLocation="CenterScreen"
+        MinHeight="450"
+        MinWidth="600">
+
+    <Grid>
+        <StackPanel x:Name="editPanel" Margin="20" Visibility="Visible">
+            <Label Content="Создание теста" FontSize="18" Foreground="Black" FontWeight="Bold" Background="White" Width="150"/>
+
+            <Label Content="Вопрос:" Margin="0,10,0,0" Width="55"/>
+            <TextBox x:Name="txtQuestion" Height="60" Background="White" BorderBrush="Black" Width="530"/>
+
+            <Label Content="Варианты ответов:" Margin="0,10,0,0" Width="110"/>
+            <StackPanel>
+                <RadioButton x:Name="rb1" GroupName="Answers" Margin="5" Width="320">
+                    <TextBox x:Name="txtAnswer1" Width="300" Background="White" BorderBrush="Black"/>
+                </RadioButton>
+                <RadioButton x:Name="rb2" GroupName="Answers" Margin="5" Width="320">
+                    <TextBox x:Name="txtAnswer2" Width="300" Background="White" BorderBrush="Black"/>
+                </RadioButton>
+                <RadioButton x:Name="rb3" GroupName="Answers" Margin="5" Width="320">
+                    <TextBox x:Name="txtAnswer3" Width="300" Background="White" BorderBrush="Black"/>
+                </RadioButton>
+                <RadioButton x:Name="rb4" GroupName="Answers" Margin="5" Width="320">
+                    <TextBox x:Name="txtAnswer4" Width="300" Background="White" BorderBrush="Black"/>
+                </RadioButton>
+            </StackPanel>
+
+            <Button x:Name="btnAdd" Content="Добавить вопрос" 
+                    Background="#FFC8E6C9" BorderBrush="#FFA5D6A7" 
+                    Foreground="Black" Margin="0,20,0,0" Padding="10,5"
+                    Click="BtnAdd_Click" Width="155"/>
+
+            <Button x:Name="btnStartTest" Content="Начать тест" 
+                    Background="#FFA5D6A7" BorderBrush="#FF81C784" 
+                    Foreground="Black" Margin="0,10,0,0" Padding="10,5"
+                    Click="BtnStartTest_Click" Width="155"/>
+        </StackPanel>
+
+        <StackPanel x:Name="testPanel" Margin="20" Visibility="Collapsed">
+            <Label x:Name="lblQuestion" FontSize="16" Foreground="#FF2E7D32" FontWeight="Bold"/>
+
+            <RadioButton x:Name="testRb1" GroupName="Test" Margin="5" Content="Ответ 1"/>
+            <RadioButton x:Name="testRb2" GroupName="Test" Margin="5" Content="Ответ 2"/>
+            <RadioButton x:Name="testRb3" GroupName="Test" Margin="5" Content="Ответ 3"/>
+            <RadioButton x:Name="testRb4" GroupName="Test" Margin="5" Content="Ответ 4"/>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20">
+                <Button x:Name="btnPrev" Content="Назад" 
+                        Background="#FFE8F5E9" BorderBrush="#FFA5D6A7" 
+                        Foreground="#FF1B5E20" Margin="5" Padding="10,5"
+                        Click="BtnPrev_Click"/>
+
+                <Button x:Name="btnNext" Content="Далее" 
+                        Background="#FFA5D6A7" BorderBrush="#FF81C784" 
+                        Foreground="#FFF1F8E9" Margin="5" Padding="10,5"
+                        Click="BtnNext_Click"/>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel x:Name="resultPanel" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed">
+            <Label x:Name="lblResult" FontSize="18" Foreground="#FF2E7D32" FontWeight="Bold"/>
+            <Button x:Name="btnRestart" Content="Создать новый тест" 
+                    Background="#FFA5D6A7" BorderBrush="#FF81C784" 
+                    Foreground="#FFF1F8E9" Margin="0,20" Padding="10,5"
+                    Click="BtnRestart_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
